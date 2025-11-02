@@ -13,6 +13,8 @@ class Pacientes extends CI_Controller
     if ($this->session->userdata('id_rol') != 2) {
       redirect('auth/login');
     }
+
+    $this->load->model('Recordatorio_model');
   }
 
   public function control()
@@ -20,5 +22,19 @@ class Pacientes extends CI_Controller
     $data['titulo'] = 'Control';
     $data['contenido'] = 'pacientes/control';
     $this->load->view('layouts/main', $data);
+  }
+
+  public function calendario()
+  {
+    $data['titulo'] = 'Mi Agenda Médica';
+    $data['contenido'] = 'pacientes/calendario';
+    $this->load->view('layouts/main', $data);
+  }
+  
+  public function get_recordatorios_asignados()
+  {
+    header('Content-Type: application/json');
+    $pacienteId = $this->session->userdata('id_usuario');
+    echo json_encode($this->Recordatorio_model->getRecordatoriosPorPaciente($pacienteId));
   }
 }

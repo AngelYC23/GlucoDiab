@@ -17,7 +17,7 @@
     <div class="action-card neu-section">
       <h3>📆 Recordatorios</h3>
       <p>Consulta tus próximos controles o notificaciones médicas.</p>
-      <button class="neu-button small-btn">Ver recordatorios</button>
+      <button class="neu-button small-btn" onclick="window.location.href='<?= site_url('pacientes/calendario') ?>'">Ver recordatorios</button>
     </div>
 
     <div class="action-card neu-section">
@@ -61,6 +61,12 @@
 
 </div>
 
+<script>
+  window.PACIENTE_ID = "<?= $this->session->userdata('id_usuario'); ?>";
+  window.USER_ROLE = "<?= $this->session->userdata('rol'); ?>";
+  window.USER_NAME = "<?= $this->session->userdata('nombre'); ?>";
+</script>
+
 <!-- Script para saludo y chat -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -72,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
   else if (hour >= 12 && hour < 18) saludo = "Buenas tardes";
   else saludo = "Buenas noches";
 
-  greeting.innerHTML = `${saludo}, <span><?= $this->session->userdata('nombre'); ?></span> 🌞`;
+  greeting.innerHTML = `${saludo}, <span><?= $this->session->userdata('nombre'); ?></span> 👋`;
 
   // Chat
   const chatIcon = document.getElementById("chatIcon");
@@ -84,15 +90,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
   chatIcon.addEventListener("click", () => chatWindow.classList.add("open"));
   closeChat.addEventListener("click", () => chatWindow.classList.remove("open"));
-  sendMessage.addEventListener("click", () => {
-    const msg = input.value.trim();
-    if (!msg) return;
-    const newMsg = document.createElement("div");
-    newMsg.className = "chat-message patient";
-    newMsg.textContent = msg;
-    chatBody.appendChild(newMsg);
-    input.value = "";
-    chatBody.scrollTop = chatBody.scrollHeight;
-  });
 });
 </script>

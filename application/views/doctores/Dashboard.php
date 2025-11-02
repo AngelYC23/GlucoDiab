@@ -11,25 +11,20 @@
     <div class="action-card neu-section">
       <h3>👩‍⚕️ Mis Pacientes</h3>
       <p>Consulta y gestiona la información de tus pacientes registrados.</p>
-      <button class="neu-button small-btn">Ver lista</button>
+      <button class="neu-button small-btn" onclick="window.location.href='<?= site_url('doctores/pacientes') ?>'">Ver lista</button>
     </div>
 
     <div class="action-card neu-section">
-      <h3>📋 Historial Médico</h3>
-      <p>Agrega o revisa registros médicos de tus pacientes fácilmente.</p>
-      <button class="neu-button small-btn">Agregar historial</button>
+      <h3>📅 Agenda Médica</h3>
+      <p>Visualiza y programa recordatorios o citas de seguimiento con tus pacientes.</p>
+      <button class="neu-button small-btn" onclick="window.location.href='<?= site_url('doctores/calendario') ?>'">Abrir calendario</button>
     </div>
 
-    <div class="action-card neu-section">
-      <h3>⏰ Recordatorios</h3>
-      <p>Configura alertas y recordatorios personalizados para tus pacientes.</p>
-      <button class="neu-button small-btn">Programar</button>
-    </div>
 
     <div class="action-card neu-section">
-      <h3>📈 Control de Glucosa</h3>
-      <p>Visualiza la evolución de la glucosa de tus pacientes por día, mes o año.</p>
-      <button class="neu-button small-btn">Ver estadísticas</button>
+      <h3>📈 Chat</h3>
+      <p>Habla y haz videollamadas con tus pacientes en tiempo real.</p>
+      <button class="neu-button small-btn" onclick="window.location.href='<?= site_url('doctores/chatdoctor') ?>'">Ver Chats</button>
     </div>
   </div>
 
