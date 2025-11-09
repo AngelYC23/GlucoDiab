@@ -46,11 +46,11 @@
   <!-- Ventana flotante del chat -->
   <div class="chat-window" id="chatWindow">
     <div class="chat-header">
-      <span>Dra. Joselyn 👨‍⚕️</span>
+      <span>Dra. Joselyn</span>
       <button id="closeChat">×</button>
     </div>
     <div class="chat-body">
-      <div class="chat-message doctor">Hola <?= $this->session->userdata('nombre'); ?>, ¿cómo te sientes hoy?</div>
+      
       
     </div>
     <div class="chat-input">
@@ -63,9 +63,12 @@
 
 <script>
   window.PACIENTE_ID = "<?= $this->session->userdata('id_usuario'); ?>";
-  window.USER_ROLE = "<?= $this->session->userdata('rol'); ?>";
+  window.USER_ROLE = "<?= $this->session->userdata('id_rol'); ?>";
   window.USER_NAME = "<?= $this->session->userdata('nombre'); ?>";
 </script>
+
+<script type="module" src="<?= base_url('assets/js/firebase-config.js') ?>"></script>
+<script type="module" src="<?= base_url('assets/js/chat-paciente.js') ?>"></script>
 
 <!-- Script para saludo y chat -->
 <script>

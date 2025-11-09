@@ -288,21 +288,50 @@
   overflow-y: auto;
 }
 
-.chat-message {
-  margin-bottom: 12px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  max-width: 80%;
-  word-wrap: break-word;
-  background: #ffffff;
-  box-shadow: inset 2px 2px 5px #d0d5dc, inset -2px -2px 5px #ffffff;
+/* Estilos SOLO para el chat del PACIENTE */
+.paciente-dashboard .chat-window .chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px !important;
+  background: linear-gradient(180deg, #f5f7fb 0%, #e9edf5 100%);
+  max-height: 350px;
+  overflow-y: auto;
 }
 
-.chat-message.doctor {
+
+/* Paciente (yo) */
+.chat-message.self {
   align-self: flex-end;
-  background: #5a8dee;
+  background: linear-gradient(135deg, #5a8dee 0%, #4a7dd6 100%);
   color: white;
+  padding: 10px 14px;
+  border-radius: 16px 16px 0 16px;
+  max-width: 75%;
+  animation: messageSlide 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(90, 141, 238, 0.3);
 }
+
+/* Doctor */
+.chat-message.other {
+  align-self: flex-start;
+  background: white;
+  color: #3d4468;
+  padding: 10px 14px;
+  border-radius: 16px 16px 16px 0;
+  max-width: 75%;
+  animation: messageSlide 0.3s ease;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.msg-time {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  text-align: right;
+}
+
 
 .chat-input {
   display: flex;
@@ -346,3 +375,27 @@
 .neu-icon:hover .icon-logo {
   transform: scale(1.1);
 }
+
+/*Botón de Usuario*/
+.user-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+}
+
+.user-btn svg,
+.user-btn .user-avatar {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+

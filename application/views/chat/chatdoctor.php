@@ -12,7 +12,7 @@
             </div>
             <div class="patient-data">
               <strong class="patient-name"><?= $p->nombre ?></strong>
-              <small class="last-message">Cargando...</small>
+              <small class="last-message"></small>
             </div>
           </li>
         <?php endforeach; ?>
@@ -553,20 +553,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 
-  .chat-message {
-    max-width: 80%;
-  }
-
-  .patient-item {
-    padding: 12px;
-  }
-
-  .patient-avatar-circle {
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
-  }
+.chat-message {
+  max-width: 80%;
 }
+
+.patient-item {
+  padding: 12px;
+}
+
+.patient-avatar-circle {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+}
+
 
 @media (max-width: 480px) {
   .doctor-dashboard {

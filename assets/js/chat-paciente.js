@@ -10,42 +10,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("messageInput");
   const sendButton = document.getElementById("sendMessage");
 
-  if (!chatBody || !input || !sendButton) {
-    console.warn("⚠️ Elementos del chat no encontrados en esta vista.");
-    return;
-  }
+  if (!chatBody || !input || !sendButton) return;
 
   const mensajesRef = ref(db, chatPath);
 
   onChildAdded(mensajesRef, (snapshot) => {
     const msg = snapshot.val();
-    console.log("💬 Mensaje recibido:", msg);
+
     const div = document.createElement("div");
-    div.className = msg.remitente == pacienteID ? "chat-message patient" : "chat-message doctor";
-    div.textContent = msg.texto;
+    div.className = msg.remitente == pacienteID ? "chat-message self" : "chat-message other";
+
+    const texto = document.createElement("p");
+    texto.textContent = msg.texto;
+
+    const hora = document.createElement("span");
+    hora.className = "msg-time";
+    hora.textContent = new Date(msg.timestamp).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    div.appendChild(texto);
+    div.appendChild(hora);
     chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
   });
 
   sendButton.addEventListener("click", async () => {
     const texto = input.value.trim();
-    if (!texto) {
-      console.warn("⚠️ Intento de enviar mensaje vacío.");
-      return;
-    }
+    if (!texto) return;
 
     const nuevoMsg = {
       remitente: pacienteID,
       texto,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
-    try {
-      const res = await push(mensajesRef, nuevoMsg);
-      //console.log("✅ Mensaje guardado en Firebase con key:", res.key);
-      input.value = "";
-    } catch (err) {
-      console.error("❌ Error al guardar mensaje:", err);
-    }
+    await push(mensajesRef, nuevoMsg);
+    input.value = "";
   });
 });

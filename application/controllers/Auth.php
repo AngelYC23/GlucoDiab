@@ -28,6 +28,7 @@ class Auth extends CI_Controller
         'nombre' => $usuario->nombre,
         'email' => $usuario->email,
         'id_rol' => $usuario->id_rol,
+        'foto_perfil' => $usuario->foto_perfil,
         'logueado' => true
       ]);
 

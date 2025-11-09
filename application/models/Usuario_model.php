@@ -22,4 +22,14 @@ class Usuario_model extends CI_Model
     return $this->db->get()->result();
   }
 
+  public function getUsuarioById($id)
+  {
+    return $this->db->get_where('usuario', ['id_usuario' => $id])->row();
+  }
+
+  public function actualizarUsuario($id, $data)
+  {
+    $this->db->where('id_usuario', $id);
+    return $this->db->update('usuario', $data);
+  }
 }
